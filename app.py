@@ -47,7 +47,7 @@ st.markdown("""
         font-weight: 700;
         color: #00d4ff;
         text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        metric-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     
     .header-subtitle {
@@ -632,7 +632,7 @@ sns.heatmap(
 
 # Customize plot
 ax.set_title('Feature Correlation Matrix', fontsize=16, color='#00d4ff', pad=20)
-ax.tick_params(axis='x', colors='white', rotation=45, ha='right')
+ax.tick_params(axis='x', colors='white', rotation=45)
 ax.tick_params(axis='y', colors='white', rotation=0)
 fig_heatmap.patch.set_facecolor('#000000')
 
