@@ -526,8 +526,8 @@ sns.boxplot(
 )
 
 # Customize plot
-ax.set_xlabel('Sensor ID', fontsize=12, color='#e2e8f0')
-ax.set_ylabel('Reading Value', fontsize=12, color='#e2e8f0')
+ax.set_xlabel('Sensor ID', fontsize=12, color='white')
+ax.set_ylabel('Reading Value', fontsize=12, color='white')
 ax.set_title('Sensor Reading Distribution with Outliers', fontsize=14, color='#00d4ff', pad=20)
 
 # Style the plot
@@ -535,15 +535,15 @@ ax.spines['bottom'].set_color('#4a5568')
 ax.spines['top'].set_color('#4a5568')
 ax.spines['left'].set_color('#4a5568')
 ax.spines['right'].set_color('#4a5568')
-ax.tick_params(axis='x', colors='#e2e8f0')
-ax.tick_params(axis='y', colors='#e2e8f0')
-ax.xaxis.label.set_color('#e2e8f0')
-ax.yaxis.label.set_color('#e2e8f0')
+ax.tick_params(axis='x', colors='white')
+ax.tick_params(axis='y', colors='white')
+ax.xaxis.label.set_color('white')
+ax.yaxis.label.set_color('white')
 ax.title.set_color('#00d4ff')
 
 # Set background
-ax.set_facecolor('rgba(15, 39, 68, 0.5)')
-fig.patch.set_facecolor('rgba(15, 39, 68, 0.3)')
+ax.set_facecolor('#0d2137')
+fig.patch.set_facecolor('#000000')
 
 plt.tight_layout()
 st.pyplot(fig, use_container_width=True)
@@ -605,8 +605,9 @@ sns.heatmap(
 
 # Customize plot
 ax.set_title('Feature Correlation Matrix', fontsize=16, color='#00d4ff', pad=20)
-ax.tick_params(axis='x', colors='#e2e8f0', rotation=45, ha='right')
-ax.tick_params(axis='y', colors='#e2e8f0', rotation=0)
+ax.tick_params(axis='x', colors='white', rotation=45, ha='right')
+ax.tick_params(axis='y', colors='white', rotation=0)
+fig_heatmap.patch.set_facecolor('#000000')
 
 plt.tight_layout()
 st.pyplot(fig_heatmap, use_container_width=True)
