@@ -30,147 +30,48 @@ st.set_page_config(
 # Define numeric columns globally to avoid NameError
 numeric_columns = ['revolutions', 'humidity', 'vibration', 'x1', 'x2', 'x3', 'x4', 'x5']
 
-# ============================================
-# CUSTOM CSS STYLING
-# ============================================
 st.markdown("""
 <style>
-    /* Main container styling */
-    .main {
-        background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
-        padding: 2rem;
-    }
-    
-    /* Header styling */
-    .header-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #00d4ff;
-        text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        margin-bottom: 0.5rem;
-    }
-    
-    .header-subtitle {
-        font-size: 1.1rem;
-        color: #64748b;
-        margin-bottom: 2rem;
-    }
-    
-    /* Metric card styling */
-    .metric-card {
-        background: linear-gradient(145deg, #1e3a5f 0%, #0f2744 100%);
-        border: 1px solid rgba(0, 212, 255, 0.2);
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 
-                    0 0 20px rgba(0, 212, 255, 0.1);
-        transition: all 0.3s ease;
-    }
-    
-    .metric-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 
-                    0 0 30px rgba(0, 212, 255, 0.2);
-        border-color: rgba(0, 212, 255, 0.4);
-    }
-    
-    /* Section styling */
-    .section-container {
-        background: rgba(15, 39, 68, 0.6);
-        border: 1px solid rgba(0, 212, 255, 0.15);
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    .section-title {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: #00d4ff;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(0, 212, 255, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    /* Sidebar styling */
-    .sidebar .sidebar-content {
-        background: linear-gradient(180deg, #0d2137 0%, #0a1628 100%);
-    }
-    
-    /* Success, warning, info message styling */
-    .stSuccess {
-        background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 100%);
-        border-left: 4px solid #10b981;
-        padding: 1rem;
-        border-radius: 8px;
-    }
-    
-    .stWarning {
-        background: linear-gradient(90deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.05) 100%);
-        border-left: 4px solid #f59e0b;
-        padding: 1rem;
-        border-radius: 8px;
-    }
-    
-    .stInfo {
-        background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 100%);
-        border-left: 4px solid #3b82f6;
-        padding: 1rem;
-        border-radius: 8px;
-    }
-    
-    /* Plotly chart styling */
-    .js-plotly-plot .plotly .main-svg {
-        background: transparent !important;
-    }
-    
-    /* Hide Streamlit default elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: #0a1628;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: #1e3a5f;
-        border-radius: 5px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: #00d4ff;
-    }
-    
-    /* Dataframe styling */
-    .stDataFrame {
-        background-color: rgba(15, 39, 68, 0.3) !important;
-        border-radius: 8px;
-    }
-    
-    .stDataFrame table {
-        color: #e2e8f0 !important;
-        background-color: rgba(15, 39, 68, 0.5) !important;
-    }
-    
-    .stDataFrame th {
-        background-color: rgba(0, 212, 255, 0.3) !important;
-        color: #ffffff !important;
-    }
-    
-    .stDataFrame td {
-        background-color: rgba(15, 39, 68, 0.5) !important;
-        color: #e2e8f0 !important;
-        border-color: rgba(0, 212, 255, 0.2) !important;
-    }
+
+.stApp {
+    background: linear-gradient(135deg, #0a1628 0%, #0d2137 100%);
+    color: #e2e8f0;
+}
+
+/* Header */
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00d4ff;
+    text-align: center;
+}
+
+/* Section Box */
+.section-box {
+    background: rgba(15, 39, 68, 0.6);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Metric Cards */
+div[data-testid="metric-container"] {
+    background: linear-gradient(145deg, #1e3a5f 0%, #0f2744 100%);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(0,212,255,0.3);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: #0f2744;
+}
+
+/* Hide Streamlit default */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+
 </style>
 """, unsafe_allow_html=True)
 
