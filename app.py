@@ -1,7 +1,7 @@
 """
 Smart Elevator Predictive Maintenance Dashboard
 A production-ready Streamlit application for elevator system monitoring
-UPDATED VERSION - Removed Scatter Plot, Enhanced Colors
+NEON PURPLE THEME VERSION
 """
 
 import streamlit as st
@@ -34,129 +34,124 @@ numeric_columns = ['revolutions', 'humidity', 'vibration', 'x1', 'x2', 'x3', 'x4
 st.markdown("""
 <style>
 
+/* ===============================
+   MAIN BACKGROUND
+=================================*/
 .stApp {
-    background: linear-gradient(135deg, #14001f 0%, #240046 40%, #3c096c 100%);
-    color: #f1f5f9;
+    background: linear-gradient(135deg, #0f0c29 0%, #1a0b2e 40%, #240046 100%);
+    color: #e0e0ff;
 }
 
-/* HEADER - GOLD for high contrast */
+/* ===============================
+   HEADER
+=================================*/
 .header-title {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     font-weight: 800;
-    color: #ffd700;
     text-align: center;
-    text-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+    color: #b388ff;
+    text-shadow: 0 0 20px #8e2de2, 0 0 40px #4a00e0;
 }
 
 .header-subtitle {
     text-align: center;
-    color: #ffec8b;
+    color: #c77dff;
     margin-bottom: 2rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-/* SECTION CONTAINERS */
+/* ===============================
+   SECTION CONTAINERS
+=================================*/
 .section-container {
-    background: rgba(36, 0, 70, 0.65);
+    background: rgba(30, 0, 60, 0.7);
     padding: 1.5rem;
     border-radius: 18px;
     margin-bottom: 2rem;
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+    border: 1px solid #8e2de2;
+    box-shadow: 0 0 25px rgba(142, 45, 226, 0.5);
 }
 
-/* SECTION TITLES - AMBER for contrast */
+/* ===============================
+   SECTION TITLES
+=================================*/
 .section-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #ffb700;
-    margin-bottom: 1rem;
+    color: #b388ff;
+    text-shadow: 0 0 10px #8e2de2;
 }
 
-/* METRIC CARDS - Golden theme */
+/* ===============================
+   METRIC CARDS
+=================================*/
 div[data-testid="metric-container"] {
-    background: linear-gradient(145deg, #3c096c 0%, #240046 100%);
+    background: linear-gradient(145deg, #1a0033 0%, #2d0066 100%);
     border-radius: 14px;
     padding: 15px;
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    border: 1px solid #8e2de2;
+    box-shadow: 0 0 15px rgba(142, 45, 226, 0.4);
 }
 
-/* Metric labels */
 div[data-testid="stMetricLabel"] {
-    color: #ffec8b;
-    font-weight: 600;
+    color: #c77dff;
 }
 
-/* Metric values */
 div[data-testid="stMetricValue"] {
-    color: #ffd700;
-    font-weight: 700;
+    color: #00f0ff;
+    text-shadow: 0 0 10px #00f0ff;
 }
 
-/* SIDEBAR */
+/* ===============================
+   SIDEBAR
+=================================*/
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #240046 0%, #14001f 100%);
+    background: linear-gradient(180deg, #1a0033 0%, #0f001f 100%);
 }
 
-/* BUTTONS - Gold theme */
+/* ===============================
+   BUTTONS
+=================================*/
 .stButton>button {
-    background-color: #daa520;
+    background: linear-gradient(90deg, #8e2de2, #4a00e0);
     color: white;
     border-radius: 10px;
     border: none;
     font-weight: 600;
+    transition: 0.3s;
 }
 
 .stButton>button:hover {
-    background-color: #ffd700;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    color: #14001f;
+    background: linear-gradient(90deg, #c77dff, #7209b7);
+    box-shadow: 0 0 15px #8e2de2;
 }
 
-/* Info boxes - Custom colors for contrast */
+/* ===============================
+   ALERT BOXES
+=================================*/
 .stInfo {
-    background-color: rgba(255, 215, 0, 0.2) !important;
-    border-left: 4px solid #ffd700 !important;
+    background-color: rgba(0, 240, 255, 0.15) !important;
+    border-left: 4px solid #00f0ff !important;
 }
 
 .stSuccess {
-    background-color: rgba(0, 255, 136, 0.2) !important;
-    border-left: 4px solid #00ff88 !important;
+    background-color: rgba(67, 233, 123, 0.15) !important;
+    border-left: 4px solid #43e97b !important;
 }
 
 .stWarning {
-    background-color: rgba(255, 165, 0, 0.2) !important;
-    border-left: 4px solid #ffa500 !important;
+    background-color: rgba(255, 170, 0, 0.15) !important;
+    border-left: 4px solid #ffaa00 !important;
 }
 
 .stError {
-    background-color: rgba(255, 71, 87, 0.2) !important;
+    background-color: rgba(255, 71, 87, 0.15) !important;
     border-left: 4px solid #ff4757 !important;
 }
 
-/* Custom text colors */
-.text-gold {
-    color: #ffd700 !important;
-    font-weight: bold;
-}
-
-.text-amber {
-    color: #ffb700 !important;
-    font-weight: bold;
-}
-
-.text-white {
-    color: #ffffff !important;
-    font-weight: bold;
-}
-
-.text-cyan {
-    color: #00ffff !important;
-    font-weight: bold;
-}
-
-/* REMOVE DEFAULT STREAMLIT */
+/* ===============================
+   REMOVE STREAMLIT BRANDING
+=================================*/
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 
@@ -204,9 +199,9 @@ except FileNotFoundError:
 # SIDEBAR FILTERS
 # ============================================
 st.sidebar.markdown("""
-<div style='padding: 1rem; background: rgba(255, 215, 0, 0.15); border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 215, 0, 0.3);'>
-    <h3 style='color: #ffd700; margin: 0;'>🎛️ Control Panel</h3>
-    <p style='color: #ffec8b; margin: 0.5rem 0 0 0; font-size: 0.9rem;'>Adjust filters to analyze specific data ranges</p>
+<div style='padding: 1rem; background: rgba(142, 45, 226, 0.2); border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid #8e2de2;'>
+    <h3 style='color: #b388ff; margin: 0;'>🎛️ Control Panel</h3>
+    <p style='color: #c77dff; margin: 0.5rem 0 0 0; font-size: 0.9rem;'>Adjust filters to analyze specific data ranges</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -334,17 +329,17 @@ vib_lower = vib_mean - 2 * vib_std
 # Create time series plot
 fig_ts = go.Figure()
 
-# Add main line - GOLD
+# Add main line - PURPLE
 fig_ts.add_trace(go.Scatter(
     x=filtered_df['ID'],
     y=filtered_df['vibration'],
     mode='lines',
     name='Vibration',
-    line=dict(color='#ffd700', width=1.5),
+    line=dict(color='#b388ff', width=1.5),
     hovertemplate='<b>ID: %{x}</b><br>Vibration: %{y:.4f}<extra></extra>'
 ))
 
-# Highlight abnormal spikes - CORAL RED
+# Highlight abnormal spikes - PINK
 anomalies = filtered_df[
     (filtered_df['vibration'] > vib_upper) | 
     (filtered_df['vibration'] < vib_lower)
@@ -357,7 +352,7 @@ if not anomalies.empty:
         mode='markers',
         name='Anomalies',
         marker=dict(
-            color='#ff6b6b',
+            color='#ff6b9d',
             size=8,
             symbol='diamond',
             line=dict(color='#fff', width=1)
@@ -365,9 +360,9 @@ if not anomalies.empty:
         hovertemplate='<b>Anomaly Detected</b><br>ID: %{x}<br>Vibration: %{y:.4f}<extra></extra>'
     ))
 
-# Add threshold lines - ORANGE RED
-fig_ts.add_hline(y=vib_upper, line_dash="dash", line_color="#ff4500", annotation_text="Upper Limit")
-fig_ts.add_hline(y=vib_lower, line_dash="dash", line_color="#ff4500", annotation_text="Lower Limit")
+# Add threshold lines - MAGENTA
+fig_ts.add_hline(y=vib_upper, line_dash="dash", line_color="#c77dff", annotation_text="Upper Limit")
+fig_ts.add_hline(y=vib_lower, line_dash="dash", line_color="#c77dff", annotation_text="Lower Limit")
 
 fig_ts.update_layout(
     title="Vibration Levels Over Time",
@@ -376,9 +371,9 @@ fig_ts.update_layout(
     hovermode='x unified',
     template='plotly_dark',
     height=400,
-    plot_bgcolor='rgba(15, 39, 68, 0.3)',
-    paper_bgcolor='rgba(15, 39, 68, 0.3)',
-    font=dict(color='#ffd700'),
+    plot_bgcolor='rgba(15, 12, 41, 0.3)',
+    paper_bgcolor='rgba(15, 12, 41, 0.3)',
+    font=dict(color='#b388ff'),
     showlegend=True,
     legend=dict(
         orientation="h",
@@ -408,7 +403,7 @@ with col1:
         x='revolutions',
         nbins=50,
         title='Distribution of Revolutions',
-        color_discrete_sequence=['#ffec8b'],  # Light Gold
+        color_discrete_sequence=['#c77dff'],  # Light Purple
         template='plotly_dark'
     )
     
@@ -416,9 +411,9 @@ with col1:
         xaxis_title="Revolutions",
         yaxis_title="Count",
         height=350,
-        plot_bgcolor='rgba(15, 39, 68, 0.3)',
-        paper_bgcolor='rgba(15, 39, 68, 0.3)',
-        font=dict(color='#ffd700')
+        plot_bgcolor='rgba(15, 12, 41, 0.3)',
+        paper_bgcolor='rgba(15, 12, 41, 0.3)',
+        font=dict(color='#b388ff')
     )
     
     fig_rev_dist.update_traces(
@@ -433,7 +428,7 @@ with col2:
         x='humidity',
         nbins=50,
         title='Distribution of Humidity',
-        color_discrete_sequence=['#ffb700'],  # Amber
+        color_discrete_sequence=['#b388ff'],  # Purple
         template='plotly_dark'
     )
     
@@ -441,9 +436,9 @@ with col2:
         xaxis_title="Humidity (%)",
         yaxis_title="Count",
         height=350,
-        plot_bgcolor='rgba(15, 39, 68, 0.3)',
-        paper_bgcolor='rgba(15, 39, 68, 0.3)',
-        font=dict(color='#ffd700')
+        plot_bgcolor='rgba(15, 12, 41, 0.3)',
+        paper_bgcolor='rgba(15, 12, 41, 0.3)',
+        font=dict(color='#b388ff')
     )
     
     fig_hum_dist.update_traces(
@@ -465,9 +460,9 @@ st.markdown("""
 sensor_columns = ['x1', 'x2', 'x3', 'x4', 'x5']
 sensor_data = filtered_df[sensor_columns].melt(var_name='Sensor', value_name='Reading')
 
-# Create box plot - Custom Gold palette
+# Create box plot - Purple gradient palette
 fig, ax = plt.subplots(figsize=(12, 6))
-custom_palette = ['#ffd700', '#ffec8b', '#ffb700', '#daa520', '#b8860b']  # Gold shades
+custom_palette = ['#b388ff', '#c77dff', '#8e2de2', '#7209b7', '#4a00e0']  # Purple shades
 sns.boxplot(
     data=sensor_data,
     x='Sensor',
@@ -478,24 +473,24 @@ sns.boxplot(
 )
 
 # Customize plot
-ax.set_xlabel('Sensor ID', fontsize=12, color='#ffd700')
-ax.set_ylabel('Reading Value', fontsize=12, color='#ffd700')
-ax.set_title('Sensor Reading Distribution with Outliers', fontsize=14, color='#ffd700', pad=20)
+ax.set_xlabel('Sensor ID', fontsize=12, color='#b388ff')
+ax.set_ylabel('Reading Value', fontsize=12, color='#b388ff')
+ax.set_title('Sensor Reading Distribution with Outliers', fontsize=14, color='#b388ff', pad=20)
 
 # Style the plot
-ax.spines['bottom'].set_color('#daa520')
-ax.spines['top'].set_color('#daa520')
-ax.spines['left'].set_color('#daa520')
-ax.spines['right'].set_color('#daa520')
-ax.tick_params(axis='x', colors='#ffd700')
-ax.tick_params(axis='y', colors='#ffd700')
-ax.xaxis.label.set_color('#ffd700')
-ax.yaxis.label.set_color('#ffd700')
-ax.title.set_color('#ffd700')
+ax.spines['bottom'].set_color('#8e2de2')
+ax.spines['top'].set_color('#8e2de2')
+ax.spines['left'].set_color('#8e2de2')
+ax.spines['right'].set_color('#8e2de2')
+ax.tick_params(axis='x', colors='#b388ff')
+ax.tick_params(axis='y', colors='#b388ff')
+ax.xaxis.label.set_color('#b388ff')
+ax.yaxis.label.set_color('#b388ff')
+ax.title.set_color('#b388ff')
 
 # Set background
-ax.set_facecolor('#0d2137')
-fig.patch.set_facecolor('#000000')
+ax.set_facecolor('#0f0c29')
+fig.patch.set_facecolor('#0a001a')
 
 plt.tight_layout()
 st.pyplot(fig, use_container_width=True)
@@ -546,21 +541,21 @@ sns.heatmap(
     corr_matrix,
     annot=True,
     fmt='.3f',
-    cmap='YlOrRd',  # Yellow-Orange-Red for contrast
+    cmap='Purples',  # Purple colormap
     center=0,
     square=True,
     linewidths=1,
     cbar_kws={'shrink': 0.8},
     ax=ax,
-    annot_kws={'size': 10, 'color': 'black', 'weight': 'bold'}
+    annot_kws={'size': 10, 'color': 'white', 'weight': 'bold'}
 )
 
 # Customize plot
-ax.set_title('Feature Correlation Matrix', fontsize=16, color='#ffd700', pad=20)
-ax.tick_params(axis='x', colors='#ffd700', rotation=45)
-ax.tick_params(axis='y', colors='#ffd700', rotation=0)
-ax.set_facecolor('#240046')
-fig.patch.set_facecolor('#14001f')
+ax.set_title('Feature Correlation Matrix', fontsize=16, color='#b388ff', pad=20)
+ax.tick_params(axis='x', colors='#b388ff', rotation=45)
+ax.tick_params(axis='y', colors='#b388ff', rotation=0)
+ax.set_facecolor('#1a0033')
+fig.patch.set_facecolor('#0f0c29')
 
 plt.tight_layout()
 st.pyplot(fig_heatmap, use_container_width=True)
@@ -592,23 +587,23 @@ with col3:
 if anomaly_count > 0:
     fig_anomaly = go.Figure()
     
-    # Add normal readings - LIGHT GOLD
+    # Add normal readings - LIGHT PURPLE
     fig_anomaly.add_trace(go.Scatter(
         x=filtered_df[filtered_df['vibration'] <= vib_threshold]['ID'],
         y=filtered_df[filtered_df['vibration'] <= vib_threshold]['vibration'],
         mode='markers',
         name='Normal Readings',
-        marker=dict(color='#ffec8b', size=5, opacity=0.6),
+        marker=dict(color='#c77dff', size=5, opacity=0.6),
         hovertemplate='<b>Normal</b><br>ID: %{x}<br>Vibration: %{y:.4f}<extra></extra>'
     ))
     
-    # Add anomalies - ORANGE RED
+    # Add anomalies - PINK
     fig_anomaly.add_trace(go.Scatter(
         x=anomalies_df['ID'],
         y=anomalies_df['vibration'],
         mode='markers',
         name='Anomalies',
-        marker=dict(color='#ff4500', size=10, symbol='diamond', line=dict(color='#fff', width=2)),
+        marker=dict(color='#ff6b9d', size=10, symbol='diamond', line=dict(color='#fff', width=2)),
         hovertemplate='<b>Anomaly</b><br>ID: %{x}<br>Vibration: %{y:.4f}<extra></extra>'
     ))
     
@@ -616,7 +611,7 @@ if anomaly_count > 0:
     fig_anomaly.add_hline(
         y=vib_threshold,
         line_dash="dash",
-        line_color="#ffa500",
+        line_color="#8e2de2",
         line_width=2,
         annotation_text=f"Threshold: {vib_threshold:.4f}"
     )
@@ -626,9 +621,9 @@ if anomaly_count > 0:
         xaxis_title="Reading ID",
         yaxis_title="Vibration Level",
         height=450,
-        plot_bgcolor='rgba(15, 39, 68, 0.3)',
-        paper_bgcolor='rgba(15, 39, 68, 0.3)',
-        font=dict(color='#ffd700'),
+        plot_bgcolor='rgba(15, 12, 41, 0.3)',
+        paper_bgcolor='rgba(15, 12, 41, 0.3)',
+        font=dict(color='#b388ff'),
         showlegend=True,
         legend=dict(
             orientation="h",
@@ -723,9 +718,9 @@ with insights_col2:
 # ============================================
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; padding: 2rem; color: #ffd700;'>
+<div style='text-align: center; padding: 2rem; color: #b388ff;'>
     <p>🛗 Smart Elevator Predictive Maintenance Dashboard</p>
-    <p style='font-size: 0.85rem; color: #ffec8b;'>Mathematics for AI Summative Assessment Project</p>
-    <p style='font-size: 0.75rem; color: #daa520;'>Built with Streamlit, Plotly, and Seaborn</p>
+    <p style='font-size: 0.85rem; color: #c77dff;'>Mathematics for AI Summative Assessment Project</p>
+    <p style='font-size: 0.75rem; color: #8e2de2;'>Built with Streamlit, Plotly, and Seaborn</p>
 </div>
 """, unsafe_allow_html=True)
