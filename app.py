@@ -365,9 +365,24 @@ fig_ts.add_hline(y=vib_upper, line_dash="dash", line_color="#c77dff", annotation
 fig_ts.add_hline(y=vib_lower, line_dash="dash", line_color="#c77dff", annotation_text="Lower Limit")
 
 fig_ts.update_layout(
-    title="Vibration Levels Over Time",
-    xaxis_title="Reading ID",
-    yaxis_title="Vibration Level",
+    title=dict(
+        text="Vibration Levels Over Time",
+        font=dict(size=18, color='#00f0ff', family='Arial Black')
+    ),
+    xaxis=dict(
+        title=dict(
+            text="Reading ID",
+            font=dict(size=14, color='#c77dff', family='Arial')
+        ),
+        tickfont=dict(size=12, color='#b388ff')
+    ),
+    yaxis=dict(
+        title=dict(
+            text="Vibration Level",
+            font=dict(size=14, color='#c77dff', family='Arial')
+        ),
+        tickfont=dict(size=12, color='#b388ff')
+    ),
     hovermode='x unified',
     template='plotly_dark',
     height=400,
@@ -380,7 +395,8 @@ fig_ts.update_layout(
         yanchor="bottom",
         y=1.02,
         xanchor="right",
-        x=1
+        x=1,
+        font=dict(size=12, color='#b388ff')
     )
 )
 
@@ -408,8 +424,24 @@ with col1:
     )
     
     fig_rev_dist.update_layout(
-        xaxis_title="Revolutions",
-        yaxis_title="Count",
+        title=dict(
+            text='Distribution of Revolutions',
+            font=dict(size=16, color='#00f0ff', family='Arial Black')
+        ),
+        xaxis=dict(
+            title=dict(
+                text="Revolutions",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
+        yaxis=dict(
+            title=dict(
+                text="Count",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
         height=350,
         plot_bgcolor='rgba(15, 12, 41, 0.3)',
         paper_bgcolor='rgba(15, 12, 41, 0.3)',
@@ -433,8 +465,24 @@ with col2:
     )
     
     fig_hum_dist.update_layout(
-        xaxis_title="Humidity (%)",
-        yaxis_title="Count",
+        title=dict(
+            text='Distribution of Humidity',
+            font=dict(size=16, color='#00f0ff', family='Arial Black')
+        ),
+        xaxis=dict(
+            title=dict(
+                text="Humidity (%)",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
+        yaxis=dict(
+            title=dict(
+                text="Count",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
         height=350,
         plot_bgcolor='rgba(15, 12, 41, 0.3)',
         paper_bgcolor='rgba(15, 12, 41, 0.3)',
@@ -617,9 +665,24 @@ if anomaly_count > 0:
     )
     
     fig_anomaly.update_layout(
-        title="Anomaly Detection Results",
-        xaxis_title="Reading ID",
-        yaxis_title="Vibration Level",
+        title=dict(
+            text="Anomaly Detection Results",
+            font=dict(size=18, color='#00f0ff', family='Arial Black')
+        ),
+        xaxis=dict(
+            title=dict(
+                text="Reading ID",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
+        yaxis=dict(
+            title=dict(
+                text="Vibration Level",
+                font=dict(size=14, color='#c77dff', family='Arial')
+            ),
+            tickfont=dict(size=12, color='#b388ff')
+        ),
         height=450,
         plot_bgcolor='rgba(15, 12, 41, 0.3)',
         paper_bgcolor='rgba(15, 12, 41, 0.3)',
@@ -630,7 +693,8 @@ if anomaly_count > 0:
             yanchor="bottom",
             y=1.02,
             xanchor="right",
-            x=1
+            x=1,
+            font=dict(size=12, color='#b388ff')
         )
     )
     
